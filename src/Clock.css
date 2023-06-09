@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "Digital-7";
+  src: url("digital-7.ttf");
+}
+
+body {
+  background-image: url("src/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.clock-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 18px;
+  border: 1px solid #08bce0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  max-width: 300px;
+  margin: 0 auto;
+  transition: transform 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  z-index: 1;
+  position: relative;
+  backdrop-filter: blur(0);
+  overflow: hidden;
+}
+
+.clock-container:hover {
+  transform: scale(1.2) rotateX(10deg);
+  z-index: 2;
+  backdrop-filter: blur(5px);
+}
+
+
+  .time {
+    font-family: "Digital-7", monospace;
+    font-size: 50px;
+    color: #950202;
+    text-shadow: 1px 2px 4px rgba(255, 3, 3, 0.452);
+}
+
+
+
+.seconds {
+  font-size: 30px; /* Adjust the font size for seconds */
+}
+
+.city {
+  font-family: "LCD", monospace;
+  font-size: 30px;
+  color: #996306;
+  text-shadow: 2px 2px 4px rgba(255, 187, 0, 0.3); /* Change the shadow color here */
+  position: relative;
+  z-index: 1;
+}
+
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(0px);
+  z-index: -1;
+}
+
+.clock-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: rgba(0, 0, 0, 1);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.clock-container:hover::after {
+  opacity: 1;
+}
